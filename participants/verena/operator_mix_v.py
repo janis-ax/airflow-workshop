@@ -9,7 +9,7 @@ def do_something():
 
 
 def do_something_in_bash():
-    return "echo 'hello from bash'"
+    return 'echo "hello"'
 
 
 
@@ -21,7 +21,7 @@ def do_something_in_bash():
 def mein_dag(): 
     
     first_task_task = PythonOperator(task_id="first_task", python_callable=do_something)
-    second_task_task = BashOperator(task_id="bash_task", bash_command=do_something_in_bash)
+    second_task_task = BashOperator(task_id="bash_task", bash_command='echo "hello')
 
     ### mix in decorators
     @task 

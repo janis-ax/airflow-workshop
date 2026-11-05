@@ -9,13 +9,14 @@ def mein_dag():
     
     @task
     def doing_1():
-        print("Hello 1")
+        text = "Hello 1"
+        print(text)
+        return text
 
     @task
-    def doing_2():
-        print("Hello 2")
+    def doing_2(txt: str):
+        print("Hello 2" + txt)
 
-    doing_2()
-    doing_1()
+    doing_2(doing_1())
 
 mein_dag()

@@ -3,7 +3,6 @@ from airflow.sdk import dag, task
 
 @dag(
     dag_id="daniel_1",
-    start_date=pendulum.datetime(2024, 1, 1, tz="Europe/Berlin"),
     schedule=None,
     catchup=False,
     tags=["daniel", "test"],
@@ -11,7 +10,7 @@ from airflow.sdk import dag, task
 
 
 class KlassenTest: 
-    def __init__:
+    def __init__():
         pass
     @task
     def doing_1() -> None:

@@ -5,7 +5,7 @@ from airflow.providers.standard.operators.bash import BashOperator
     dag_id="tobi3",
     tags=["test", "test2", "test3"],
     schedule="@daily",
-    start_date=2026-11-1,
+    start_date=pendulum.datetime(2026, 10, 1, tz="UTC"),
     catchup=False
 )
 def mydag():

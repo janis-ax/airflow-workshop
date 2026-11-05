@@ -9,10 +9,11 @@ from airflow.sdk import dag, task
     tags=["daniel", "test"],
 )
 
-@task
+
 class KlassenTest: 
     def __init__:
         pass
+    @task
     def doing_1() -> None:
         print("Hello 1")
 

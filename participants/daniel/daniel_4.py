@@ -50,5 +50,5 @@ def test_etl():
     error = error()
 
     bash_task >> start_alt >> error
-    bash_task >> start >> error >> verify_message >> interprete_message
+    bash_task >> start >> verify_message >> interprete_message
 test_etl()

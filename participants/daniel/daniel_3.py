@@ -31,13 +31,18 @@ def test_etl():
             print("Perfect")
         else:
             print("Error")
+    
+    @task
+    def start_alt():
+        print("alternativer start")
 
     bash_task = bash_test()
     start = doing0()
+    start_alt = start_alt()
     verify_message = doing1()
     interprete_message = doing2(verify_message)
 
-    bash_task >> start
+    bash_task >> start_alt
     bash_task >> start >> verify_message >> interprete_message
 
 test_etl()

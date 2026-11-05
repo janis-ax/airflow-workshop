@@ -14,5 +14,8 @@ with DAG(dag_id="tobi2", tags=["tobi"]):
     schritt_1 = BashOperator(task_id="tobi_schritt_1", bash_command='touch /tmp/test.txt')
     schritt_2 = PythonOperator(task_id="schritt_2", python_callable=testprint)
     schritt_3 = BashOperator(task_id="tobi_schritt_3", bash_command='cat /tmp/test.txt')
+    
+    schritt_4 = BashOperator(task_id="tobi_schritt_4", bash_command=f"echo '{hello()}' >> /tmp/test.txt")
+    schritt_5 = BashOperator(task_id="tobi_schritt_5", bash_command='cat /tmp/test.txt')
 
     schritt_1 >> schritt_2 >> schritt_3

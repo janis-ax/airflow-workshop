@@ -10,6 +10,7 @@ def mein_dag():
     @task
     def doing1(): 
         message = 200
+        result = None
         if message == 200:
             result = 1
         else:
@@ -24,6 +25,6 @@ def mein_dag():
             print("Error")
 
     result = doing1()
-    doing2()
+    doing2(result)
 
 mein_dag()    

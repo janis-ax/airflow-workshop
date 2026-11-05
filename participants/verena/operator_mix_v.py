@@ -1,7 +1,7 @@
 from airflow.sdk import dag, task
 
 def do_something():
-    print "welcome"
+    print("welcome")
     return None
 
 

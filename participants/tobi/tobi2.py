@@ -3,11 +3,11 @@ from airflow.providers.standard.operators.bash import BashOperator
 from airflow.sdk import DAG
 
 def hello():
-    print("Hello")
     return "Hello"
 
 def testprint():
     output = hello()
+    print(output)
     BashOperator(task_id="file-write", bash_command=f"echo '{output}' >> /tmp/test.txt")
 
 with DAG(dag_id="tobi2", tags=["tobi"]):

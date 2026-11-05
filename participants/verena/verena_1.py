@@ -1,5 +1,10 @@
 from airflow.sdk import dag, task
 
+@task
+def doing1(): 
+    print("Hello 1")
+
+
 @dag(
     dag_id="verena_1", 
     schedule=None,
@@ -7,9 +12,6 @@ from airflow.sdk import dag, task
 )
 def mein_dag(): 
     
-    @task
-    def doing1(): 
-        print("Hello 1")
 
     @task
     def doing2():

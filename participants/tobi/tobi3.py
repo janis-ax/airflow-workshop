@@ -17,9 +17,9 @@ def mydag():
     def doing_2():
         print("World")
 
-    @task
-    def doing_3():
-        BashOperator(task_id="tobi_schritt_5", bash_command='sleep 30')
+    @task.bash
+    def doing_3()-> str:
+        return "sleep 30"
 
     doing_1 >> doing_3 >> doing_2
 

@@ -26,6 +26,6 @@ def mein_dag():
     
     first_task_task = PythonOperator(task_id="first_task", python_callable=do_something)
 
-    first_task_task() 
+    first_task_task
 
 mein_dag()    

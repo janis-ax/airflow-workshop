@@ -24,8 +24,6 @@ def mein_dag():
         print(txt) 
         return None
 
-
-    first_task_task >> second_task_task 
-# print_bash_output_in_python(second_task_task.output)
+    first_task_task >> print_bash_output_in_python(second_task_task.output)
     
 mein_dag()    

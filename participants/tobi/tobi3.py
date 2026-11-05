@@ -8,7 +8,7 @@ import pendulum
     tags=["test", "test2", "test3"],
     schedule="@daily",
     start_date=pendulum.datetime(2026, 10, 1, tz="UTC"),
-    catchup=False
+    catchup=True
 )
 def mydag():
     @task

@@ -1,11 +1,15 @@
 from airflow.sdk import dag, task
 from airflow.providers.standard.operators.python import PythonOperator
 from airflow.providers.standard.operators.bash import BashOperator
-import pendulum
+import pendulum 
+from airflow.sdk import get_current_context
+
 
 
 def do_something():
     print("welcome")
+    context = get_current_context()
+    print(context["logical_date"])
     return None
 
 
@@ -21,15 +25,7 @@ def do_something():
 def mein_dag(): 
     
     first_task_task = PythonOperator(task_id="first_task", python_callable=do_something)
-    second_task_task = BashOperator(task_id="bash_task", bash_command= 'echo hello')
 
-    ### mix in decorators
-    @task 
-    def print_bash_output_in_python(txt: str):
-        print(txt) 
-        return None
+    first_task_task() 
 
-    first_task_task >> second_task_task
-    # print_bash_output_in_python(second_task_task.output)
-    
 mein_dag()    

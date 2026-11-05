@@ -24,7 +24,7 @@ def mydag():
         return "sleep 30"
 
     #doing_1 >> doing_3 >> doing_2
-    doing1()
+    doing_1()
     doing_3()
     doing_2()
 

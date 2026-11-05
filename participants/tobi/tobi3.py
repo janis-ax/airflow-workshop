@@ -13,9 +13,11 @@ def mydag():
     def doing_1():
         print("Hello")
 
+    @task
     def doing_2():
         print("World")
 
+    @task
     def doing_3():
         BashOperator(task_id="tobi_schritt_5", bash_command='sleep 30')
 

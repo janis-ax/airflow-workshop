@@ -11,7 +11,10 @@ def mein_dag():
     def doing1(): 
         print("Hello 1")
 
+    @task
+    def doing2():
+        print("Hello x2")
 
-    doing1()
+    doing2(doing1())
 
 mein_dag()    

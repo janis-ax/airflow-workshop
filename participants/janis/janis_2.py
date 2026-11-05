@@ -15,6 +15,7 @@ def mein_dag():
 
     @task
     def doing_2(txt: str):
+        print(type(d1))
         print("Hello 2 " + txt)
 
     @task
@@ -25,7 +26,9 @@ def mein_dag():
     def doing_4():
         print("Hello 4")
 
-    d1 = doing_1()                 
+    d1 = doing_1()  
+
+    print(type(d1))               
 
     doing_2(d1)                    
     d1 >> doing_3() >> doing_4()  

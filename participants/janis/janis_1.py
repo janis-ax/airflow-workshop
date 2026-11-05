@@ -15,6 +15,7 @@ def mein_dag():
     def doing_2():
         print("Hello 2")
 
-    doing_2(doing_1())
+    doing_2()
+    doing_1()
 
 mein_dag()

@@ -49,7 +49,6 @@ def test_etl():
     interprete_message = doing2(verify_message)
     error = error()
 
-    bash_task >> start_alt >> error
-    bash_task >> start >> verify_message >> interprete_message >> error
-
+    bash_task >> start_alt 
+    bash_task >> start >> verify_message >> interprete_message 
 test_etl()

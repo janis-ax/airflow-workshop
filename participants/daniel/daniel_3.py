@@ -37,7 +37,7 @@ def test_etl():
     verify_message = doing1()
     interprete_message = doing2(verify_message)
 
-    start >> bash_task
+    bash_task >> start
     bash_task >> start >> verify_message >> interprete_message
 
 test_etl()

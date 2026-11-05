@@ -1,0 +1,20 @@
+# Musterlösung Aufgabe 12: Konfiguration für Linting und Tests
+# Diese Datei ins Wurzelverzeichnis des eigenen Projekts legen.
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+# E/F: pycodestyle und pyflakes, I: Import-Sortierung, AIR: Airflow-Regeln
+select = ["E", "F", "I", "AIR"]
+
+[tool.black]
+line-length = 100
+
+[tool.isort]
+profile = "black"
+line_length = 100
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

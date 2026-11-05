@@ -1,0 +1,8 @@
+# Dateien, die Airflow beim Einlesen der DAGs ignorieren soll.
+# Airflow 3 nutzt hier standardmäßig Glob-Syntax (wie .gitignore).
+
+# Tests importieren pytest und gehören nicht in den Scheduler
+**/tests/
+
+# Braucht ein installiertes Plugin, sonst Import-Fehler in der UI
+musterloesungen/aufgabe_23_custom_timetable/

@@ -17,7 +17,7 @@ def mein_dag():
         return result
     
     @task
-    def doing2(doing1):
+    def doing2():
         result = doing1()
         if result == 1:
             print("Perfect")

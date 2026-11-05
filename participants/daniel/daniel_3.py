@@ -1,11 +1,16 @@
 from airflow.sdk import dag, task
+from airflow.providers.standard.operators.bash import BashOperator
 
 @dag(
-    dag_id="daniel_2", 
+    dag_id="daniel_3", 
     schedule=None,
     tags=["test", "daniel"]
 )
 def test_etl(): 
+
+    @task.bash
+    def bash_test():
+        return "echo 'Damit mir mal Bash getestet haben'"
 
     @task
     def doing0():
@@ -29,11 +34,12 @@ def test_etl():
         else:
             print("Error")
 
+    bash_test = bash_test()
     start = doing0()
     verify_message = doing1()
     interprete_message = doing2(result)
 
-    start >> verify_message >> interprete_message
+    bash_test >> start >> verify_message >> interprete_message
 
 
 test_etl()    

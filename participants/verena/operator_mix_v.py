@@ -15,7 +15,7 @@ def do_something():
     schedule="20 * * * *",
     start_date=pendulum.datetime(2026, 11, 5, 12, 0, tz="Europe/Berlin"),
     catchup=True,
-    max_active_dags=1,
+    max_active_tasks=1,
     tags=["test", "verena"]
 )
 def mein_dag(): 

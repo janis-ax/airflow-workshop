@@ -9,6 +9,7 @@ from airflow.sdk import dag, task
     tags=["daniel", "test"],
 )
 
+@task
 class KlassenTest: 
     def __init__:
         pass

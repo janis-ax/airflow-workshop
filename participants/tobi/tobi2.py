@@ -7,8 +7,10 @@ def hello():
     return "Hello"
 
 def testprint():
+    BashOperator(task_id="file-write", bash_command=f'/tmp/test.txt << {hello()}')
     hello()
 
 with DAG(dag_id="tobi2", tags=["tobi"]):
     schritt_1 = BashOperator(task_id="tobi_schritt_1", bash_command='touch /tmp/test.txt')
     schritt_2 = PythonOperator(task_id="schritt_2", python_callable=testprint)
+    schritt_3 = BashOperator(task_id="tobi_schritt_3", bash_command='cat /tmp/test.txt')

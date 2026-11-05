@@ -40,6 +40,7 @@ def test_etl():
     @task
     def start_alt():
         print("alternativer start")
+        raise Exception("This task always fails")
 
     bash_task = bash_test()
     start = doing0()
@@ -49,6 +50,6 @@ def test_etl():
     error = error()
 
     bash_task >> start_alt >> error
-    bash_task >> start >> verify_message >> interprete_message
+    bash_task >> start >> verify_message >> interprete_message >> error
 
 test_etl()

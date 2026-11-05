@@ -9,7 +9,7 @@ def do_something():
 
 
 def do_something_in_bash():
-    return "echo 'hello from bash'"
+    return 'echo "hello"'
 
 
 

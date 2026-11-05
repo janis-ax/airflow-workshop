@@ -11,7 +11,7 @@ def do_something_in_bash():
 
 
 @dag(
-    dag_id="verena_1", 
+    dag_id="verena_2", 
     schedule=None,
     tags=["test", "verena"]
 )

@@ -1,5 +1,6 @@
 from airflow.sdk import dag, task
-from airflow.providers.standard.operators.python import PythonOperator, BashOperator
+from airflow.providers.standard.operators.python import PythonOperator
+from airflow.providers.standard.operators.bash import BashOperator
 
 
 def do_something():

@@ -6,7 +6,7 @@ from airflow.providers.standard.operators.bash import BashOperator
     tags=["test", "test2", "test3"],
     schedule="@daily",
     start_date=2026-11-1,
-    catchup=false
+    catchup=False
 )
 def mydag():
     @task

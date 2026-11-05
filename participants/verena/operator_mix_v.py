@@ -1,6 +1,7 @@
 from airflow.sdk import dag, task
 from airflow.providers.standard.operators.python import PythonOperator
 from airflow.providers.standard.operators.bash import BashOperator
+import pendulum
 
 
 def do_something():
@@ -8,9 +9,12 @@ def do_something():
     return None
 
 
+
 @dag(
-    dag_id="verena_2", 
-    schedule=None,
+    dag_id="verena_2",
+    schedule="20 * * * *",
+    start_date=pendulum.datetime(2026, 11, 5, 12, 0, tz="Europe/Berlin"),
+    catchup=False,
     tags=["test", "verena"]
 )
 def mein_dag(): 

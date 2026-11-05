@@ -2,7 +2,7 @@ from airflow.sdk import dag, task
 from airflow.utils.trigger_rule import TriggerRule
 
 @dag(
-    dag_id="daniel_3",
+    dag_id="daniel_4",
     schedule= "20 15 * * *",
     tags=["test", "daniel"]
 )

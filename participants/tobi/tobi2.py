@@ -8,7 +8,7 @@ def hello():
 
 def testprint():
     output = hello()
-    BashOperator(task_id="file-write", bash_command=f'/tmp/test.txt << {output}')
+    BashOperator(task_id="file-write", bash_command=f"echo '{output}' >> /tmp/test.txt")
 
 with DAG(dag_id="tobi2", tags=["tobi"]):
     schritt_1 = BashOperator(task_id="tobi_schritt_1", bash_command='touch /tmp/test.txt')

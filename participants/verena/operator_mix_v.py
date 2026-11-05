@@ -14,7 +14,8 @@ def do_something():
     dag_id="verena_2",
     schedule="20 * * * *",
     start_date=pendulum.datetime(2026, 11, 5, 12, 0, tz="Europe/Berlin"),
-    catchup=False,
+    catchup=True,
+    max_active_dags=1,
     tags=["test", "verena"]
 )
 def mein_dag(): 
@@ -28,6 +29,7 @@ def mein_dag():
         print(txt) 
         return None
 
-    first_task_task >> print_bash_output_in_python(second_task_task.output)
+    first_task_task >> second_task_task
+    # print_bash_output_in_python(second_task_task.output)
     
 mein_dag()    

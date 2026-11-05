@@ -18,4 +18,6 @@ with DAG(dag_id="tobi2", tags=["tobi"]):
     schritt_4 = BashOperator(task_id="tobi_schritt_4", bash_command=f"echo '{hello()}' >> /tmp/test.txt")
     schritt_5 = BashOperator(task_id="tobi_schritt_5", bash_command='cat /tmp/test.txt')
 
-    schritt_1 >> schritt_2 >> schritt_3 >> schritt_4 >> schritt_5
+    schritt_6 = BashOperator(task_id="tobi_schritt_6", bash_command='rm /tmp/test.txt')
+
+    schritt_1 >> schritt_2 >> schritt_3 >> schritt_4 >> schritt_5 >> schritt_6

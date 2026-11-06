@@ -1,4 +1,5 @@
 from airflow.sdk import dag, task
+from airflow.sdk import get_current_context
 
 @dag(
     dag_id="tobi6",
@@ -7,6 +8,7 @@ from airflow.sdk import dag, task
 def mydag():
     @task
     def doing_1():
+        ti = get_current_context()["ti"]
         # Pushen
         ti.xcom_push(key="alter", value=65)
         ti.xcom_push(key="name", value="franz")
@@ -15,6 +17,7 @@ def mydag():
     @task
     def doing_2():
         # Pull
+        ti = get_current_context()["ti"]
         alter = ti.xcom_pull(task_ids="doing_1", key="alter")
         name = ti.xcom_pull(task_ids="doing_1", key="name")
         lieblingszahl = ti.xcom_pull(task_ids="doing_1", key="lieblingszahl")

@@ -12,8 +12,8 @@ def test_etl():
     def bash_test():
         return "echo 'Damit wir mal Bash getestet haben'"
 
-    @task
-    def error(trigger_rule=TriggerRule.ONE_FAILED):
+    @task(trigger_rule=TriggerRule.ONE_FAILED)
+    def error():
         print("Es ist ein Fehler in der Prozessierung aufgetreten")
 
     @task
@@ -50,6 +50,5 @@ def test_etl():
     error = error()
 
     bash_task >> start_alt >> error
-    bash_task >> start >> verify_message >> interprete_message >> error
-
+    bash_task >> start >> verify_message >> interprete_message
 test_etl()

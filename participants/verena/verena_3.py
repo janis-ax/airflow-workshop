@@ -53,3 +53,5 @@ def mein_dag():
     addition_task = addition()
 
     [n1, n2] >> addition_task
+
+mein_dag()

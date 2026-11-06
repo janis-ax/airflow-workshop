@@ -18,30 +18,38 @@ import os
     max_active_tasks=1,
     tags=["test", "verena"]
 )
-def mein_dag(): 
+def mein_dag():
 
     @task
-    def get_time():
+    def number1():
         print("hallo")
+
+        number1 = 1
+        return number1
+
+    @task
+    def number2():
+        number2 = 2
+        return number2
+
+    @task
+    def addition():
         context = get_current_context()
-        logical_date = context["logical_date"]
         ti = context["ti"]
-        print(context["logical_date"])
-        ti.xcom_push(key="ld", value=logical_date)
-        return None
 
-    def get_offset():
-        offset = 1
+        wert1 = ti.xcom_pull(task_ids="number1")
+        wert2 = ti.xcom_pull(task_ids="number2")
 
-    @task.sensor(poke_interval=30, timeout=600, mode="reschedule")
-    def warte_auf_datei() -> bool:
-        context = get_current_context()
-        ti = context["ti"]
-        time_var = ti.xcom_pull(task_ids="get_time", key="ld") 
-        filename = f"/tmp/input_{time_var}.csv"
-        print(f"waiting for file {filename}")
-        return os.path.exists(filename)
+        ergebnis = wert1 + wert2
 
-    get_time() >> warte_auf_datei()
+        print(f"Ergebnis: {ergebnis}")
 
-mein_dag()    
+        return ergebnis
+
+    # Task-Abhängigkeiten
+    n1 = number1()
+    n2 = number2()
+
+    addition_task = addition()
+
+    [n1, n2] >> addition_task

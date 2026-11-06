@@ -4,9 +4,10 @@ from airflow.providers.standard.operators.bash import BashOperator
 import pendulum 
 from airflow.sdk import get_current_context
 import os
+from verena.utils import number1, number2, number3
 
-
-
+def eins_plus_zwei(zahl1, zahl2):
+    return zahl1 + zahl2
 
 
 
@@ -20,38 +21,9 @@ import os
 )
 def mein_dag():
 
-    @task
-    def number1():
-        print("hallo")
 
-        number1 = 1
-        return number1
+    addition_task = PythonOperator(task_id = eins_plus_zwei, callable=eins_plus_zwei)
 
-    @task
-    def number2():
-        number2 = 2
-        return number2
-
-    @task
-    def addition():
-        context = get_current_context()
-        ti = context["ti"]
-
-        wert1 = ti.xcom_pull(task_ids="number1")
-        wert2 = ti.xcom_pull(task_ids="number2")
-
-        ergebnis = wert1 + wert2
-
-        print(f"Ergebnis: {ergebnis}")
-
-        return ergebnis
-
-    # Task-Abhängigkeiten
-    n1 = number1()
-    n2 = number2()
-
-    addition_task = addition()
-
-    [n1, n2] >> addition_task
+    addition_task
 
 mein_dag()

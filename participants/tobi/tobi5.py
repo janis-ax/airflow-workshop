@@ -1,4 +1,5 @@
 from airflow.sdk import dag, task
+import os
 
 @dag(
     dag_id="tobi5",

@@ -21,17 +21,22 @@ import os
 def mein_dag(): 
 
     @task
-    def do_something():
+    def get_time():
         print("hallo")
         context = get_current_context()
+        logical_date = context["logical_date"]
         print(context["logical_date"])
+        ti.xcom_push(key="ld", value=logical_date)
         return None
 
 
     @task.sensor(poke_interval=30, timeout=600, mode="reschedule")
     def warte_auf_datei() -> bool:
-        return os.path.exists("/tmp/input2.csv")
+        time_var = ti.xcom_pull(task_ids="get_time", key="ld") 
+        filename = f"/tmp/input_{time_var}.csv"
+        print(f"waiting for file {filename}")
+        return os.path.exists(filename)
 
-    warte_auf_datei() >> do_something()
+    get_time() >> warte_auf_datei()
 
 mein_dag()    

@@ -25,13 +25,18 @@ def mein_dag():
         print("hallo")
         context = get_current_context()
         logical_date = context["logical_date"]
+        ti = context["ti"]
         print(context["logical_date"])
         ti.xcom_push(key="ld", value=logical_date)
         return None
 
+    def get_offset():
+        offset = 1
 
     @task.sensor(poke_interval=30, timeout=600, mode="reschedule")
     def warte_auf_datei() -> bool:
+        context = get_current_context()
+        ti = context["ti"]
         time_var = ti.xcom_pull(task_ids="get_time", key="ld") 
         filename = f"/tmp/input_{time_var}.csv"
         print(f"waiting for file {filename}")

@@ -7,11 +7,6 @@ import os
 
 
 
-def do_something():
-    print("hallo")
-    context = get_current_context()
-    print(context["logical_date"])
-    return None
 
 
 
@@ -24,13 +19,19 @@ def do_something():
     tags=["test", "verena"]
 )
 def mein_dag(): 
-    
-    first_task_task = PythonOperator(task_id="first_task", python_callable=do_something)
+
+    @task
+    def do_something():
+        print("hallo")
+        context = get_current_context()
+        print(context["logical_date"])
+        return None
+
 
     @task.sensor(poke_interval=30, timeout=600, mode="reschedule")
     def warte_auf_datei() -> bool:
         return os.path.exists("/tmp/input.csv")
 
-    first_task_task >> warte_auf_datei
+    warte_auf_datei() >> do_something()
 
 mein_dag()    

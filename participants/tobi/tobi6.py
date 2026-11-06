@@ -21,6 +21,6 @@ def mydag():
         return_string = f"Hello my name is {name}. {alter} years old. My favourite number is {lieblingszahl}."
         return return_string
 
-    doing_1() >> doing_2
+    doing_1() >> doing_2()
 
 mydag()

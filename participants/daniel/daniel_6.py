@@ -1,5 +1,5 @@
 from airflow.sdk import dag, task, get_current_context
-from airflow.utils.trigger_rule import TriggerRule, get_current_context
+from airflow.utils.trigger_rule import TriggerRule
 import os
 
 @dag(

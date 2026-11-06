@@ -13,7 +13,7 @@ def mydag():
 
     @task
     def doing_2():
-        tl.doing_2(1)
+        tl.loop_2(1)
 
     doing_1()
     doing_2()

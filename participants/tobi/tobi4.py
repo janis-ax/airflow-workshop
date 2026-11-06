@@ -1,7 +1,7 @@
 from airflow.sdk import dag, task
 
 @dag(
-    dag_id="tobi3",
+    dag_id="tobi4",
     tags=["test", "test2", "test3"]
 )
 def mydag():

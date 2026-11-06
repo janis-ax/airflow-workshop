@@ -19,6 +19,7 @@ def mydag():
         if counter > 100:
             raise SystemError("100 reached")
         else:
+            print(counter)
             doing_1(counter)
 
     doing_2(1)

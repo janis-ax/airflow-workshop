@@ -11,7 +11,8 @@ def mydag():
         ti.xcom_push(key="alter", value=65)
         ti.xcom_push(key="name", value="franz")
         ti.xcom_push(key="lieblingszahl", value=3.14)
-
+.
+    @task
     def doing_2():
         # Pull
         alter = ti.xcom_pull(task_ids="doing_1", key="alter")

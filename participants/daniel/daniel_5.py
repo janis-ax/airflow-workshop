@@ -9,7 +9,7 @@ import os
 )
 def test_etl():
 
-    # Sensor für Deffered Action
+    # Sensor für Deffered Action prüfen
     @task.sensor(poke_interval=30, timeout=600, mode="reschedule")
     def warte_auf_datei() -> bool:
         return os.path.exists("/tmp/input.csv")

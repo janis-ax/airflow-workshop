@@ -3,7 +3,7 @@ from airflow.sdk import dag
 from airflow.providers.standard.operators.python import PythonOperator
 import pendulum
 
-from participants.verena.utils import number1, number2
+from participants.verena.utils.verena_lib import number1, number2
 
 def eins_plus_zwei():
     return number1 + number2

@@ -4,7 +4,7 @@ from utils import tobi_lib
 tl = tobi_lib
 
 @dag(
-    dag_id="tobi7",
+    dag_id="tobi7"
 )
 def mydag():
     @task

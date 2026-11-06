@@ -3,6 +3,7 @@ from airflow.providers.standard.operators.python import PythonOperator
 from airflow.providers.standard.operators.bash import BashOperator
 import pendulum 
 from airflow.sdk import get_current_context
+import os
 
 
 
@@ -27,8 +28,8 @@ def mein_dag():
     first_task_task = PythonOperator(task_id="first_task", python_callable=do_something)
 
     @task.sensor(poke_interval=30, timeout=600, mode="reschedule")
-    #def warte_auf_datei() -> bool:
-    #    return os.path.exists("/tmp/input.csv")
+    def warte_auf_datei() -> bool:
+        return os.path.exists("/tmp/input.csv")
 
     first_task_task >> warte_auf_datei
 

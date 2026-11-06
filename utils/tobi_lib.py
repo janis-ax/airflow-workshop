@@ -10,7 +10,8 @@ def loop_2(counter):
     counter += 1
     print("World")
     if counter > 100:
-        raise SystemExit("100 reached")
+        print("100 reached")
+        raise SystemExit("0")
     else:
         print(counter)
         loop_1(counter)

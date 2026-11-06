@@ -6,7 +6,7 @@ def loop_1(counter):
     print("Hello")
     loop_2(counter)
 
-def doing_2(counter):
+def loop_2(counter):
     counter += 1
     print("World")
     if counter > 100:

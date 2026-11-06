@@ -14,7 +14,7 @@ import os
     dag_id="verena_3",
     schedule="20 * * * *",
     start_date=pendulum.datetime(2026, 11, 5, 12, 0, tz="Europe/Berlin"),
-    catchup=True,
+    catchup=False,
     max_active_tasks=1,
     tags=["test", "verena"]
 )
@@ -30,7 +30,7 @@ def mein_dag():
 
     @task.sensor(poke_interval=30, timeout=600, mode="reschedule")
     def warte_auf_datei() -> bool:
-        return os.path.exists("/tmp/input.csv")
+        return os.path.exists("/tmp/input2.csv")
 
     warte_auf_datei() >> do_something()
 
